@@ -125,6 +125,32 @@ li:hover {
 	text-align: center;
 	margin-bottom: 1em;
 }
+
+.filters {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	justify-items: center;
+	margin-bottom: 20px;
+	margin-top: 20px;	
+}
+.filter-button {
+	margin-right: 20px;
+	border-radius: 20px;
+	height: 35px;
+	background-color: white;
+	border-color: #1D6154;
+}
+
+.filter-button span{
+	display: flex;
+	font-family: 'Syne';
+	color: #1D6154;
+	font-size: 16px;
+	justify-items: center;
+	margin: 5px;
+
+}
 .gallery {
 	width: 100%;
 	display: grid;
@@ -186,3 +212,30 @@ footer nav ul {
 	margin: 2em
 }
 
+#login-section {
+	display: flex;
+	flex-direction: column;
+	text-align: center;
+	background-color: #FFFEF8;
+
+}
+
+#login-section h2 {
+	margin-bottom: 30px;
+}
+#login-section form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.login-background-color {
+	background-color: #FFFEF8;
+}
+
+.login-input label {
+	display: flex;
+	justify-items:left;
+	text-align: left;
+
+}
