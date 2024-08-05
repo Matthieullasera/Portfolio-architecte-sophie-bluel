@@ -216,7 +216,6 @@ footer nav ul {
 	display: flex;
 	flex-direction: column;
 	text-align: center;
-	background-color: #FFFEF8;
 
 }
 
@@ -229,13 +228,11 @@ footer nav ul {
 	align-items: center;
 }
 
-.login-background-color {
-	background-color: #FFFEF8;
+body {
+    background-color: #FFFEF8;; 
 }
+#login-section label {
 
-.login-input label {
 	display: flex;
-	justify-items:left;
 	text-align: left;
-
 }
