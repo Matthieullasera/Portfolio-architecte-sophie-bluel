@@ -56,7 +56,6 @@ async function filterEvent() {
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    // Création des boutons de filtre
     const filterData = [
         { id: 'all', label: 'Tous' },
         { id: '1', label: 'Objets' },
