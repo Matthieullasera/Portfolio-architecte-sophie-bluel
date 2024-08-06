@@ -1,20 +1,6 @@
-async function fetchCategories() {
+async function fetchCategories(url) {
     try {
-        const response = await fetch('http://localhost:5678/api/categories');
-        if (!response.ok) {
-            throw new Error('Erreur lors de la récupération des catégories des filtres');
-        }
-        const data = await response.json();
-        return data;
-    } catch (error) {
-        console.error(error);
-        return [];
-    }
-}
-
-async function fetchInfosPictures() {
-    try {
-        const response = await fetch('http://localhost:5678/api/works');
+        const response = await fetch(url);
         if (!response.ok) {
             throw new Error('Erreur lors de la récupération des informations des images');
         }
@@ -26,27 +12,7 @@ async function fetchInfosPictures() {
     }
 }
 
-async function sortPictureInCategories() {
-    const list_info_picture = await fetchInfosPictures();
-    const list_categories = await fetchCategories();
-    let list_objets = [];
-    let list_appartements = [];
-    let list_hotels = [];
-    const [objets, appartements, hotels] = list_categories;
-
-    for (let i = 0; i < list_info_picture.length; i++) {
-        if (list_info_picture[i].categoryId === objets.id) {
-            list_objets.push(list_info_picture[i]);
-        } else if (list_info_picture[i].categoryId === appartements.id) {
-            list_appartements.push(list_info_picture[i]);
-        } else if (list_info_picture[i].categoryId === hotels.id) {
-            list_hotels.push(list_info_picture[i]);
-        }
-    }
-    return {objets: list_objets, appartements: list_appartements, hotels: list_hotels, all: list_info_picture};
-}
-
-function displayPictures(pictures) {
+function displaygallerie(pictures) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = ''; 
 
@@ -63,31 +29,54 @@ function displayPictures(pictures) {
     });
 }
 
-async function filterevent() {
-    let pictureCategories = await sortPictureInCategories();
+async function filterEvent() {
     let filterButtons = document.querySelectorAll('.filter-button');
+
+    let list_images = await fetchCategories('http://localhost:5678/api/works');
+
+    console.log('List Images:', list_images);
 
     filterButtons.forEach(button => {
         button.addEventListener('click', () => {
             const categoryId = button.id;
+            console.log('Category ID:', categoryId);
 
-            let picturesToDisplay = [];
-
+            let picturesToDisplay;
             if (categoryId === 'all') {
-                picturesToDisplay = pictureCategories.all;
-            } else if (categoryId === pictureCategories.objets[0]?.categoryId.toString()) {
-                picturesToDisplay = pictureCategories.objets;
-            } else if (categoryId === pictureCategories.appartements[0]?.categoryId.toString()) {
-                picturesToDisplay = pictureCategories.appartements;
-            } else if (categoryId === pictureCategories.hotels[0]?.categoryId.toString()) {
-                picturesToDisplay = pictureCategories.hotels;
+                picturesToDisplay = list_images;
+            } else {
+                picturesToDisplay = list_images.filter(image => image.categoryId.toString() === categoryId);
             }
+            console.log('Pictures to Display:', picturesToDisplay);
 
-            displayPictures(picturesToDisplay);
+            displaygallerie(picturesToDisplay);
         });
     });
 }
 
+
 document.addEventListener('DOMContentLoaded', () => {
-    filterevent();
+    // Création des boutons de filtre
+    const filterData = [
+        { id: 'all', label: 'Tous' },
+        { id: '1', label: 'Objets' },
+        { id: '2', label: 'Appartement' },
+        { id: '3', label: 'Hotels & Restaurants' }
+    ];
+
+    const filtersContainer = document.querySelector('.filters');
+
+    filterData.forEach(filter => {
+        const button = document.createElement('button');
+        button.id = filter.id;
+        button.className = 'filter-button';
+
+        const span = document.createElement('span');
+        span.textContent = filter.label;
+
+        button.appendChild(span);
+        filtersContainer.appendChild(button);
+    });
+
+        filterEvent();
 });
