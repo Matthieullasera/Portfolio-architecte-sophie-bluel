@@ -1,4 +1,4 @@
-async function fetchCategories(url) {
+async function fetchData(url) {
     try {
         const response = await fetch(url);
         if (!response.ok) {
@@ -12,7 +12,7 @@ async function fetchCategories(url) {
     }
 }
 
-function displaygallerie(pictures) {
+function displayGallery(pictures) {
     const gallery = document.querySelector('.gallery');
     gallery.innerHTML = ''; 
 
@@ -29,14 +29,23 @@ function displaygallerie(pictures) {
     });
 }
 
-async function filterEvent() {
-    let filterButtons = document.querySelectorAll('.filter-button');
+function createFilterButtons(categories) {
+    const filtersContainer = document.querySelector('.filters');
+    const buttons = categories.map(filter => {
+        const button = document.createElement('button');
+        button.id = filter.id;
+        button.className = 'filter-button';
+        const span = document.createElement('span');
+        span.textContent = filter.name;
+        button.appendChild(span);
+        filtersContainer.appendChild(button);
+        return button;
+    });
+    return buttons;
+}
 
-    let list_images = await fetchCategories('http://localhost:5678/api/works');
-
-    console.log('List Images:', list_images);
-
-    filterButtons.forEach(button => {
+async function filterEvent(buttons, list_images) {
+    buttons.forEach(button => {
         button.addEventListener('click', () => {
             const categoryId = button.id;
             console.log('Category ID:', categoryId);
@@ -49,33 +58,16 @@ async function filterEvent() {
             }
             console.log('Pictures to Display:', picturesToDisplay);
 
-            displaygallerie(picturesToDisplay);
+            displayGallery(picturesToDisplay);
         });
     });
 }
 
-
-document.addEventListener('DOMContentLoaded', () => {
-    const filterData = [
-        { id: 'all', label: 'Tous' },
-        { id: '1', label: 'Objets' },
-        { id: '2', label: 'Appartement' },
-        { id: '3', label: 'Hotels & Restaurants' }
-    ];
-
-    const filtersContainer = document.querySelector('.filters');
-
-    filterData.forEach(filter => {
-        const button = document.createElement('button');
-        button.id = filter.id;
-        button.className = 'filter-button';
-
-        const span = document.createElement('span');
-        span.textContent = filter.label;
-
-        button.appendChild(span);
-        filtersContainer.appendChild(button);
-    });
-
-        filterEvent();
+document.addEventListener('DOMContentLoaded', async () => {
+    const categories = await fetchData('http://localhost:5678/api/categories');
+    let list_images = await fetchData('http://localhost:5678/api/works');
+    categories.unshift({ id: 'all', name: 'Tous' });
+    console.log(categories);
+    const buttons = createFilterButtons(categories);
+    filterEvent(buttons, list_images);
 });
