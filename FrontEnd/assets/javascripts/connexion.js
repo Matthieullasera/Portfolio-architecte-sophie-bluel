@@ -1,7 +1,9 @@
 document.addEventListener('DOMContentLoaded', main);
 
+
 function main() {
     checkForm();
+    removeTokenForLogout();
 }
 
 function checkForm() {
@@ -33,6 +35,10 @@ function checkForm() {
                 
                 if (response.ok) {
                     console.log("Login successful");
+                    localStorage.setItem('authToken', result.token);
+                    console.log("Token stored in local storage");
+                    window.location.href = 'index_admin.html';
+
                     
                 } else {
                     console.log("Login failed", result);
@@ -44,4 +50,15 @@ function checkForm() {
             console.log("Invalid email or empty password");
         }
     });
+}
+
+function removeTokenForLogout() {
+    const logoutButton = document.getElementById('logout');
+    if (logoutButton) {
+        logoutButton.addEventListener('click', function(event) {
+            event.preventDefault(); 
+            localStorage.removeItem('authToken');
+            window.location.href = 'index.html'; 
+        });
+    }
 }

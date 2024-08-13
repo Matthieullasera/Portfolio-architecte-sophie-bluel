@@ -236,3 +236,46 @@ body {
 	display: flex;
 	text-align: left;
 }
+
+#titleMyProjects {
+	display: flex;
+    flex-direction: row;
+    align-content: center;
+    justify-content: center;
+    align-items: center;
+}
+
+#titleMyProjects i {
+	margin-left: 15px;
+	margin-right: 10px;
+}
+
+#titleMyProjects h2 {
+	margin-bottom: 0px;
+}
+
+#edition_mode {
+	background-color: black;
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	padding: 20px;
+	margin: 0px;
+	
+}
+#edition_mode p, i {
+	color: white;
+	margin-right: 5px;
+}
+header {
+	display: flex;
+	flex-direction: column;
+	margin-top: 0px;
+}
+
+#header_title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 30px;
+}
