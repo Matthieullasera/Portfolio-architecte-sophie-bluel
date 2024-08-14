@@ -12,17 +12,24 @@
     <script src="./assets/javascripts/connexion.js"></script>
 </head>
 <body>
-<header>
-    <h1>Sophie Bluel <span>Architecte d'intérieur</span></h1>
-    <nav>
-        <ul>
-            <li><a href="./index.html">projets</a></li>
-            <li>contact</li>
-            <li><a href="#" id="login">login</a></li>
-            <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <section id="admin" class="edition_mode">
+            <i class="fa-solid fa-pen-to-square"></i>
+            <p>Mode édition</p>
+        </section>
+        <section id="header_title">
+            <h1><a href="./index.html">Sophie Bluel<span>Architecte d'intérieur</span></a></h1>
+            <nav>
+                <ul>
+                    <li><a href="#portfolio">projets</a></li>
+                    <li><a href="#contact">contact</a></li>
+                    <li id="login"><a href="./connexion.html">login</a></li>
+                    <li id="admin">logout</li>
+                    <li><img src="./assets/icons/instagram.png" alt="Instagram"></li>
+                </ul>
+            </nav>
+        </section>
+    </header>
 <main>
     <section id="login-section">
         <h2>Log In</h2>

@@ -55,9 +55,10 @@ body {
 }
 header {
 	display: flex;
-	justify-content: space-between;
-	margin: 50px 0
+	flex-direction: column;
+	margin-top: 0px;
 }
+
 section {
 	margin: 50px 0
 }
@@ -68,7 +69,8 @@ h1{
 	font-family: 'Syne';
 	font-size: 22px;
 	font-weight: 800;
-	color: #B1663C
+	color: #B1663C;
+
 }
 
 h1 > span {
@@ -110,6 +112,14 @@ li:hover {
 	margin: auto;
 	width: 80%;
 }
+
+#header_title {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	margin-top: 30px;
+}
+
 
 #introduction article {
 	flex: 1
@@ -237,7 +247,8 @@ body {
 	text-align: left;
 }
 
-#titleMyProjects {
+
+.titleMyProjects {
 	display: flex;
     flex-direction: row;
     align-content: center;
@@ -245,16 +256,17 @@ body {
     align-items: center;
 }
 
-#titleMyProjects i {
+.titleMyProjects i {
 	margin-left: 15px;
 	margin-right: 10px;
+	color: black;
 }
 
-#titleMyProjects h2 {
+.titleMyProjects h2 {
 	margin-bottom: 0px;
 }
 
-#edition_mode {
+.edition_mode {
 	background-color: black;
 	display: flex;
 	flex-direction: row;
@@ -263,19 +275,33 @@ body {
 	margin: 0px;
 	
 }
-#edition_mode p, i {
+.edition_mode p, i {
 	color: white;
 	margin-right: 5px;
 }
-header {
-	display: flex;
-	flex-direction: column;
-	margin-top: 0px;
+
+#admin {
+	display: none;
 }
 
-#header_title {
+#header_title a{
+	text-decoration: none;
+    color: inherit;
 	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	margin-top: 30px;
+	flex-direction: column;
+}
+
+#header_title h1 {
+	font-family: 'Syne';
+	font-size: 22px;
+	font-weight: 800;
+	color: #B1663C;
+}
+
+
+#header_title h1 span {
+font-family: 'Work Sans';
+font-size:10px;
+letter-spacing: 0.1em;
+;
 }
