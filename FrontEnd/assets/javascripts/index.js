@@ -82,6 +82,30 @@ async function filterEvent(buttons, list_images) {
     });
 }
 
+function adminMode (){
+    const token = localStorage.getItem('authToken');
+    const adminElements = document.querySelectorAll('.admin'); // Sélectionne tous les éléments avec la classe 'admin'
+
+    adminElements.forEach(element => {
+        if (token) {
+            // Affiche les éléments avec la classe 'admin'
+            element.style.setProperty('display', 'flex', 'important');
+        } else {
+            // Cache les éléments avec la classe 'admin'
+            element.style.setProperty('display', 'none', 'important');
+        }
+    });
+
+    const notLog = document.querySelectorAll('.notLog');
+    notLog.forEach(element => {
+        if (token) {
+            element.style.display = 'none'; // Cache l'élément avec l'ID 'login'
+        } else {
+            element.style.display = 'flex'; // Affiche l'élément avec l'ID 'login'
+        }
+    })
+
+}
 function removeTokenForLogout() {
     const logoutButton = document.getElementById('logout');
     if (logoutButton) {
@@ -97,7 +121,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     const categories = await fetchData('http://localhost:5678/api/categories');
     let list_images = await fetchData('http://localhost:5678/api/works');
     categories.unshift({ id: 'all', name: 'Tous' });
-    console.log(list_images);
+    adminMode ();
     const images = createGalleryMyProjects(list_images);
     const buttons = createFilterButtons(categories);
     filterEvent(buttons, list_images);

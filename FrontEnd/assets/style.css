@@ -248,7 +248,7 @@ body {
 }
 
 
-.titleMyProjects {
+#titleMyProjects {
 	display: flex;
     flex-direction: row;
     align-content: center;
@@ -256,17 +256,18 @@ body {
     align-items: center;
 }
 
-.titleMyProjects i {
+#titleMyProjects i {
 	margin-left: 15px;
 	margin-right: 10px;
 	color: black;
+	
 }
 
-.titleMyProjects h2 {
+#titleMyProjects h2 {
 	margin-bottom: 0px;
 }
 
-.edition_mode {
+#edition_mode {
 	background-color: black;
 	display: flex;
 	flex-direction: row;
@@ -275,13 +276,13 @@ body {
 	margin: 0px;
 	
 }
-.edition_mode p, i {
+#edition_mode p, i {
 	color: white;
 	margin-right: 5px;
 }
 
-#admin {
-	display: none;
+.admin {
+	display: none !important;
 }
 
 #header_title a{

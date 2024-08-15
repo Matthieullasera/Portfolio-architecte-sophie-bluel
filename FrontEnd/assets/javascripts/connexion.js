@@ -33,15 +33,14 @@ function checkForm() {
             });
         
             const result = await response.json();
-            console.log(result);
         
             if (response.ok) {
-                console.log("Login successful");
                 localStorage.setItem('authToken', result.token);
-                console.log("Token stored in local storage");
                 window.location.href = 'index.html';
+
+                
             } else {
-                console.log("Login failed", result);
+                console.error("Login failed", result); //met un error sur la barre de connexion  
             }
         } catch (error) {
             console.error("Error during fetch", error);
