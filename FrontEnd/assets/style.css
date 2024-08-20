@@ -136,7 +136,7 @@ li:hover {
 	margin-bottom: 1em;
 }
 
-.filters {
+#filters {
 	display: flex;
 	flex-direction: row;
 	justify-content: center;
@@ -259,6 +259,8 @@ body {
 #titleMyProjects i {
 	margin-left: 15px;
 	margin-right: 10px;
+	width: 14px;
+	height: 14px;
 	color: black;
 	
 }
@@ -276,9 +278,14 @@ body {
 	margin: 0px;
 	
 }
-#edition_mode p, i {
+#edition_mode p{
 	color: white;
 	margin-right: 5px;
+}
+
+#edition_mode i {
+	color: white;
+	width: 14px;
 }
 
 .admin {
@@ -306,3 +313,109 @@ font-size:10px;
 letter-spacing: 0.1em;
 ;
 }
+
+#portfolio h2 {
+	display: flex;
+	justify-content: center;
+}
+
+#modalGallery {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: none; 
+    width: 80%; 
+    max-width: 600px; 
+    background-color: white; 
+    padding: 100%;
+	background-color: rgba(0,0,0,0.4);  
+
+}
+
+.modal-content {
+    background-color: #fefefe;
+	width: 630px;
+	height: 688px;
+    padding: 20px;
+	margin: 0px;
+}
+
+.close {
+    color: bla;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+	cursor: pointer;
+}
+
+.modal h2 {
+	font-family: 'Work Sans';
+	color : black;
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.gallery-modal {
+	display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    column-gap: 10px;
+	row-gap: 20px;
+	padding-bottom: 90px;
+    padding-top: 40px;
+	margin-left: 80px;
+	margin-right: 80px;
+	border-bottom: solid 1px rgb(190, 190, 190);
+}
+
+.gallery-modal img {
+    display: block;
+    width: 100%;
+    height: auto; 
+}
+
+.gallery-modal figure {
+    position: relative; 
+    margin: 0; 
+}
+.add-photo-btn {
+    display: block;
+    margin: 30px auto 0 auto;
+    padding: 10px 30px;
+    background-color: #1D6154;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    font-family: 'Syne', sans-serif;
+    cursor: pointer;
+}
+
+
+.gallery-modal figure i {
+    position: absolute; 
+    top: 5px; /* Ajustez la distance du bord supérieur */
+    right: 5px; /* Ajustez la distance du bord droit */
+    background: black; /* Optionnel : pour un fond semi-transparent */
+    color: white; /* Couleur de l'icône */
+    padding: 3px; /* Espacement autour de l'icône */
+    border-radius: 3px; /* Rendre l'arrière-plan rond */
+    cursor: pointer; /* Change le curseur pour indiquer que c'est cliquable */
+    font-size: 8px; /* Ajuster la taille de l'icône */
+}
+
+
+#modalAddPicture {
+    position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    display: none; 
+    width: 80%; 
+    max-width: 600px; 
+    background-color: white; 
+    padding: 100%;
+	background-color: rgba(0,0,0,0.4);  
+
+}
+

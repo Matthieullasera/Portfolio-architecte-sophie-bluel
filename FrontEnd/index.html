@@ -6,6 +6,7 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="preconnect" href="https://fonts.googleapis.com">
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
@@ -48,10 +49,10 @@
 		<h2 class="notLog">Mes Projets</h2>
 		<section id="titleMyProjects" class="admin">
             <h2>Mes Projets</h2>
-            <a href="./modification_page.html"><i class="fa-solid fa-pen-to-square"></i></a>
+            <i class="fa-solid fa-pen-to-square"></i>
             <p>modifer</p>
         </section>
-		<div class="filters">
+		<div id="filters" class="notLog">
 		</div>
 		<div class="gallery">
 		</div>
@@ -78,5 +79,34 @@
 		</ul>
 	</nav>
 </footer>
+<div id="modalGallery" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Galerie photo</h2>
+        <div class="gallery-modal">
+        </div>
+        <button class="add-photo-btn">Ajouter une photo</button>
+    </div>
+</div>
+
+<div id="modalAddPicture" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <h2>Ajout photo</h2>
+        <div id="addPicture">
+			<i class="fa-solid fa-image"></i>
+			<button>+ Ajouter photo</button>
+			<span>jpg, png : 4mo max</span>
+        </div>
+		<div>
+			<label for="titre">Titre</label>
+			<input type="text", name="titre">
+			<label for="categorie">Catégorie</label>
+			<input type="text",name="categorie">
+		</div>
+        <button id="validation">Valider</button>
+</div>
+
+</div>
 </body>
 </html>
