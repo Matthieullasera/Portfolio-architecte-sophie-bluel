@@ -16,7 +16,7 @@
 </head>
 <body>
 <header>
-	<section id="edition_mode" class="admin">
+	<section class="edition_mode admin hidden">
         <i class="fa-solid fa-pen-to-square"></i>
         <p>Mode édition</p>
     </section>
@@ -45,14 +45,14 @@
 			<p>En cas de besoin, une équipe pluridisciplinaire peut-être constituée : architecte DPLG, décorateur(trice)</p>
 		</article>
 	</section>
-	<section id="portfolio">
+	<section class="portfolio">
 		<h2 class="notLog">Mes Projets</h2>
-		<section id="titleMyProjects" class="admin">
+		<section class="titleMyProjects admin hidden">
             <h2>Mes Projets</h2>
             <i class="fa-solid fa-pen-to-square"></i>
             <p>modifer</p>
         </section>
-		<div id="filters" class="notLog">
+		<div id="filters" class="filters notLog">
 		</div>
 		<div class="gallery">
 		</div>
@@ -79,7 +79,7 @@
 		</ul>
 	</nav>
 </footer>
-<div id="modalGallery" class="modal">
+<div id="modalGallery" class="modal hidden">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Galerie photo</h2>
@@ -89,23 +89,39 @@
     </div>
 </div>
 
-<div id="modalAddPicture" class="modal">
+<div id="modalAddPicture" class="modal hidden">
     <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Ajout photo</h2>
-        <div id="addPicture">
-			<i class="fa-solid fa-image"></i>
-			<button>+ Ajouter photo</button>
-			<span>jpg, png : 4mo max</span>
+        <div class="headerModale">
+            <span class="close">&times;</span>
+            <i class="fa-solid fa-arrow-left"></i>
         </div>
-		<div>
-			<label for="titre">Titre</label>
-			<input type="text", name="titre">
-			<label for="categorie">Catégorie</label>
-			<input type="text",name="categorie">
-		</div>
-        <button id="validation">Valider</button>
+        <h2 class="TitleAddPicture">Ajout photo</h2>
+        <div class="addPicture">
+            <i class="fa-regular fa-image"></i>
+            <button id="buttonAddPicture">+ Ajouter photo</button>
+            <input type="file" id="fileInput" accept="image/*" class="hidden">
+            <span>jpg, png : 4mo max</span>
+            <img id="ImagePreview" class="imagePreview hidden" />
+        </div>
+        
+        <form name="dataInputInfo" id="dataInputInfo" class="dataInput" method="post" enctype="multipart/form-data">
+            <div class="titleInput">
+                <label for="titre">Titre</label>
+                <input type="text" name="title" id="titleInput" required>
+            </div>
+            <div class="categoryInput">
+                <label for="categorie">Catégorie</label>
+                <input type="text" name="category" id="categoryInput" required>
+                <i class="fa-solid fa-chevron-down"></i>
+                <div id="toggleText" class="toggleText hidden"></div>
+            </div>
+        </form>
+        <button id="buttonValid" class="buttonValid">Valider</button>
+        <div id="output"></div>
+    </div>
 </div>
+
+
 
 </div>
 </body>

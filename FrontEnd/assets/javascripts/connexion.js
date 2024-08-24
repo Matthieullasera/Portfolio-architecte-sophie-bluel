@@ -40,7 +40,7 @@ function checkForm() {
 
                 
             } else {
-                console.error("Login failed", result); //met un error sur la barre de connexion  
+                console.error("Login failed", result);  
             }
         } catch (error) {
             console.error("Error during fetch", error);
