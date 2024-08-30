@@ -84,7 +84,9 @@ h2{
 	font-family: 'Syne';
 	font-weight: 700;
 	font-size: 30px;
-	color: #1D6154
+	color: #1D6154;
+	justify-content: center;
+	display: flex;
 }
 nav ul {
 	display: flex;
@@ -117,10 +119,19 @@ li:hover {
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	justify-items: center;
+	align-items: center;
 	margin-top: 30px;
 }
 
-
+#header_title li {
+	padding-right: 30px;
+}
+#header_title img {
+	width: 50%;
+	margin-top: 4px;
+	margin-left: 4px;
+}
 #introduction article {
 	flex: 1
 }
@@ -150,7 +161,7 @@ li:hover {
 	border-radius: 20px;
 	height: 35px;
 	background-color: white;
-	border-color: #1D6154;
+	border: solid 2px #1D6154;
 }
 
 .filter-button span{
@@ -223,29 +234,58 @@ footer nav ul {
 	margin: 2em
 }
 
-#login-section {
-	display: flex;
-	flex-direction: column;
-	text-align: center;
-
-}
-
 #login-section h2 {
+	margin-top: 50px;
 	margin-bottom: 30px;
 }
-#login-section form {
-	display: flex;
-	flex-direction: column;
-	align-items: center;
+.login_input {
+    display: flex;
+    flex-direction: column;
+    width: 40%; 
+    margin: 0 auto; 
 }
+
+.login_input label {
+	margin-bottom: 10px;
+	margin-top: 20px ;
+}
+
+.login_input input {
+    margin-bottom: 10px;
+	padding: 15px;
+	border: none;
+	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.login_input button {
+    padding: 10px;
+    font-size: 16px;
+	font-family: 'Work Sans';
+    background-color: #1D6154;
+    color: white;
+	border: none;
+    border-radius: 20px;
+    cursor: pointer;
+	margin-top: 30px;
+	margin-bottom: 30px;
+	margin-left: 13%;
+	width: 70%;
+}
+
+
+.login_input a {
+    text-align: center;
+    color: #000000;
+    text-decoration: none;
+    margin-top: 10px;
+	text-decoration: underline;
+	padding-bottom: 100%;
+}
+
+
 
 body {
     background-color: #FFFEF8;; 
-}
-#login-section label {
-
-	display: flex;
-	text-align: left;
 }
 
 
@@ -316,12 +356,23 @@ letter-spacing: 0.1em;
 }
 
 
-.modal {
+#modals {
+	position: fixed; 
+    top: 50%; 
+    left: 50%; 
+    transform: translate(-50%, -50%); 
+    width: 80%; 
+    max-width: 600px; 
+    background-color: white; 
+    padding: 100%;
+	background-color: rgba(0,0,0,0.4);
+}
+
+#modalGallery {
     position: fixed; 
     top: 50%; 
     left: 50%; 
     transform: translate(-50%, -50%); 
-    display: none; 
     width: 80%; 
     max-width: 600px; 
     background-color: white; 
@@ -335,7 +386,6 @@ letter-spacing: 0.1em;
 	width: 630px;
 	height: 688px;
     padding: 20px;
-	margin: 0px;
 }
 
 .close {
@@ -346,14 +396,17 @@ letter-spacing: 0.1em;
 	cursor: pointer;
 }
 
-.modal h2 {
+#modals h2 {
 	font-family: 'Work Sans';
 	color : black;
     text-align: center;
     font-size: 24px;
-    margin-bottom: 20px;
 }
 
+#modalGallery h2 {
+	margin-top: 50px;
+	margin-bottom: 30px;
+}
 .gallery-modal {
 	display: grid;
     grid-template-columns: repeat(5, 1fr);
@@ -376,10 +429,11 @@ letter-spacing: 0.1em;
     position: relative; 
     margin: 0; 
 }
+
 .add-photo-btn {
     display: block;
     margin: 30px auto 0 auto;
-    padding: 10px 30px;
+    padding: 10px 60px;
     background-color: #1D6154;
     color: white;
     border: none;
@@ -388,7 +442,10 @@ letter-spacing: 0.1em;
     cursor: pointer;
 }
 
-
+#modalAddPicture h2 {
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
 .gallery-modal figure i {
     position: absolute; 
     top: 5px; 
@@ -410,7 +467,9 @@ letter-spacing: 0.1em;
 
 .headerModale i {
 	cursor: pointer;
+	font-size: 20px;
 }
+
 .addPicture {
 	display: flex;
 	flex-direction: column;
@@ -454,10 +513,9 @@ letter-spacing: 0.1em;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-	margin-left: 13%;
+	margin-left: 17%;
 	background: rgba(255, 255, 255, 0.3); 
-    backdrop-filter: blur(10px);
-	margin-bottom: 40px;
+	margin-bottom: 30px;
 }
 
 .titleInput {
@@ -479,7 +537,7 @@ letter-spacing: 0.1em;
 .categoryInput {
 	display: flex;
 	flex-direction: column;
-	padding-bottom: 50px;
+	padding-bottom: 40px;
 	border-bottom: solid 2px #B9C5CC;
 }
 
@@ -494,31 +552,29 @@ letter-spacing: 0.1em;
 	box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.1);
 }
 
-.categoryInput i {
-	position: fixed;
-	right: 18%;
-	top: 62%;
-	cursor: pointer;
-	z-index: 2; 
-}
-.buttonValid {
-	margin-left: 23%;
-	background-color: #A7A7A7;
-	color: #ffffff;
-	font-family: 'Work Sans';
-	font-size: 16px;
-	border: none;
-	border-radius: 20px;
-	width: 50%;
-	padding: 10px;
-	cursor: pointer;
+.categoryInput i::before {
+    position: relative;
+    left: 380px;
+    bottom: 30px;
+    cursor: pointer;
 }
 
-.toggleText {
-    display: flex;
-    flex-direction: column ;
-    gap: 10px; 
-	margin-top: 10px;
+.buttonValid {
+    margin-left: 25%;
+    background-color: #A7A7A7; 
+    color: #ffffff;
+    font-family: 'Work Sans';
+    font-size: 16px;
+    border: none;
+    border-radius: 20px;
+    width: 50%;
+    padding: 10px;
+    cursor: not-allowed;
+}
+
+.buttonValid.active {
+    background-color: #1D6154;
+    cursor: pointer;
 }
 
 
@@ -527,15 +583,12 @@ letter-spacing: 0.1em;
     box-sizing: border-box; 
     padding: 10px;
     border: 1px solid #ccc; 
-    border-radius: 5px; 
+    border-radius: 15px; 
     background-color: #f9f9f9; 
     cursor: pointer; 
-    text-align: center; 
+    text-align: center;
+	margin-top: 5px; 
 }
 .hidden {
     display: none;
-}
-
-.visible {
-    display: flex;
 }

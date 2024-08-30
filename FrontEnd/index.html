@@ -24,7 +24,7 @@
         <h1><a href="./index.html">Sophie Bluel<span>Architecte d'intérieur</span></a></h1>
         <nav>
             <ul>
-                <li><a href="#portfolio">projets</a></li>
+                <li><a href="#gallery">projets</a></li>
                 <li><a href="#contact">contact</a></li>
                 <li id="login" class="notLog"><a href="./connexion.html">login</a></li>
 				<li id="logout" class="admin"><a href="./index.html">logout</a></li>
@@ -79,50 +79,47 @@
 		</ul>
 	</nav>
 </footer>
-<div id="modalGallery" class="modal hidden">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Galerie photo</h2>
-        <div class="gallery-modal">
-        </div>
-        <button class="add-photo-btn">Ajouter une photo</button>
-    </div>
-</div>
 
-<div id="modalAddPicture" class="modal hidden">
-    <div class="modal-content">
-        <div class="headerModale">
+<div id="modals" class="hidden">
+    <div id="modalGallery" class="hidden ">
+        <div class="modal-content">
             <span class="close">&times;</span>
-            <i class="fa-solid fa-arrow-left"></i>
-        </div>
-        <h2 class="TitleAddPicture">Ajout photo</h2>
-        <div class="addPicture">
-            <i class="fa-regular fa-image"></i>
-            <button id="buttonAddPicture">+ Ajouter photo</button>
-            <input type="file" id="fileInput" accept="image/*" class="hidden">
-            <span>jpg, png : 4mo max</span>
-            <img id="ImagePreview" class="imagePreview hidden" />
-        </div>
-        
-        <form name="dataInputInfo" id="dataInputInfo" class="dataInput" method="post" enctype="multipart/form-data">
-            <div class="titleInput">
-                <label for="titre">Titre</label>
-                <input type="text" name="title" id="titleInput" required>
+            <h2>Galerie photo</h2>
+            <div class="gallery-modal">
             </div>
-            <div class="categoryInput">
-                <label for="categorie">Catégorie</label>
-                <input type="text" name="category" id="categoryInput" required>
-                <i class="fa-solid fa-chevron-down"></i>
-                <div id="toggleText" class="toggleText hidden"></div>
-            </div>
-        </form>
-        <button id="buttonValid" class="buttonValid">Valider</button>
-        <div id="output"></div>
+            <button class="add-photo-btn">Ajouter une photo</button>
+        </div>
     </div>
-</div>
-
-
-
+    <div id="modalAddPicture" class="hidden">
+        <div class="modal-content">
+            <div class="headerModale">
+                <span class="close">&times;</span>
+                <i class="fa-solid fa-arrow-left"></i>
+            </div>
+            <h2 class="TitleAddPicture">Ajout photo</h2>
+            <div class="addPicture">
+                <i class="fa-regular fa-image"></i>
+                <button id="buttonAddPicture">+ Ajouter photo</button>
+                <input type="file" id="fileInput" accept="image/*" class="hidden">
+                <span>jpg, png : 4mo max</span>
+                <img id="ImagePreview" class="imagePreview hidden" />
+            </div>
+            
+            <form name="dataInputInfo" id="dataInputInfo" class="dataInput" method="post" enctype="multipart/form-data">
+                <div class="titleInput">
+                    <label for="titre">Titre</label>
+                    <input type="text" name="title" id="titleInput" required>
+                </div>
+                <div class="categoryInput">
+                    <label for="categorie">Catégorie</label>
+                    <input type="text" name="category" id="categoryInput" required>
+                    <i class="fa-solid fa-chevron-down"></i>
+                    <div id="toggleText" class="toggleText hidden"></div>
+                </div>
+            </form>
+            <button id="buttonValid" class="buttonValid">Valider</button>
+        </div>
+    </div>
 </div>
 </body>
 </html>
