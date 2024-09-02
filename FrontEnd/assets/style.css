@@ -387,6 +387,7 @@ letter-spacing: 0.1em;
 	width: 630px;
 	height: 688px;
     padding: 20px;
+	padding-bottom: 60px;
 }
 
 .close {
@@ -556,7 +557,7 @@ letter-spacing: 0.1em;
 .categoryInput i::before {
     position: relative;
     left: 380px;
-    bottom: 45px;
+    bottom: 35px;
     cursor: pointer;
 }
 
