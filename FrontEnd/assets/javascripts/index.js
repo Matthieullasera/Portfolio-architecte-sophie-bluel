@@ -83,7 +83,6 @@ async function addCategoryFilterListeners(buttons, list_images) {
     buttons.forEach(button => {
         button.addEventListener('click', () => {
             const categoryId = button.id;
-            console.log('Category ID:', categoryId);
 
             let picturesToDisplay;
             if (categoryId === 'all') {
@@ -91,7 +90,6 @@ async function addCategoryFilterListeners(buttons, list_images) {
             } else {
                 picturesToDisplay = list_images.filter(image => image.categoryId.toString() === categoryId);
             }
-            console.log('Pictures to Display:', picturesToDisplay);
 
             displayWorksInGallery(picturesToDisplay, ".gallery");
         });
@@ -110,20 +108,16 @@ function toggleAdminMode() {
 
     adminElements.forEach(element => {
         if (token) {
-            element.classList.add('visible');
             element.classList.remove('hidden');
         } else {
             element.classList.add('hidden');
-            element.classList.remove('visible');
         }
     });
 
     notLog.forEach(element => {
         if (token) {
             element.classList.add('hidden');
-            element.classList.remove('visible');
         } else {
-            element.classList.add('visible');
             element.classList.remove('hidden');
         }
     });
@@ -171,7 +165,6 @@ function setupImageDeletion(list_images) {
         trashButton.addEventListener('click', async function(event) {
             event.preventDefault();
             const imageId = list_images[index].id;
-            console.log(imageId)
             const figure = trashButton.closest('figure')
             try {
                 const response = await fetch(`http://localhost:5678/api/works/${imageId}`, {
@@ -382,8 +375,6 @@ async function main() {
         fetchJSONData('http://localhost:5678/api/categories'),
         fetchJSONData('http://localhost:5678/api/works')
     ]);
-    console.log('Categories:', categories);
-    console.log('Works:', list_images);
 
     categories.unshift({ id: 'all', name: 'Tous' });
 
@@ -411,13 +402,55 @@ async function main() {
         const isFileSelected = fileInput.files.length > 0;
         const isTitleFilled = titleInput.value.trim() !== '';
         const isCategoryFilled = categoryInput.value.trim() !== '';
-
+    
+        if (!isFileSelected) {
+            fileInput.classList.add('alert');
+            showAlert(fileInput, 'Veuillez sélectionner un fichier.');
+        } else {
+            fileInput.classList.remove('alert');
+            hideAlert(fileInput);
+        }
+    
+        if (!isTitleFilled) {
+            titleInput.classList.add('alert');
+            showAlert(titleInput, 'Veuillez remplir le titre.');
+        } else {
+            titleInput.classList.remove('alert');
+            hideAlert(titleInput);
+        }
+    
+        if (!isCategoryFilled) {
+            categoryInput.classList.add('alert');
+            showAlert(categoryInput, 'Veuillez sélectionner une catégorie.');
+        } else {
+            categoryInput.classList.remove('alert');
+            hideAlert(categoryInput);
+        }
+    
         if (isFileSelected && isTitleFilled && isCategoryFilled) {
             buttonValid.classList.add('active');
         } else {
             buttonValid.classList.remove('active');
         }
     }
+    
+    function showAlert(inputElement, message) {
+        let alertElement = inputElement.nextElementSibling;
+        if (!alertElement || !alertElement.classList.contains('alert-message')) {
+            alertElement = document.createElement('div');
+            alertElement.classList.add('alert-message');
+            inputElement.parentNode.insertBefore(alertElement, inputElement.nextSibling);
+        }
+        alertElement.textContent = message;
+    }
+    
+    function hideAlert(inputElement) {
+        let alertElement = inputElement.nextElementSibling;
+        if (alertElement && alertElement.classList.contains('alert-message')) {
+            alertElement.textContent = '';
+        }
+    }
+    
     
     fileInput.addEventListener('change', checkFormValidity);
     titleInput.addEventListener('input', checkFormValidity);

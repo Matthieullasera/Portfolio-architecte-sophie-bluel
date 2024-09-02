@@ -162,6 +162,7 @@ li:hover {
 	height: 35px;
 	background-color: white;
 	border: solid 2px #1D6154;
+	cursor: pointer;
 }
 
 .filter-button span{
@@ -555,7 +556,7 @@ letter-spacing: 0.1em;
 .categoryInput i::before {
     position: relative;
     left: 380px;
-    bottom: 30px;
+    bottom: 45px;
     cursor: pointer;
 }
 
@@ -589,6 +590,29 @@ letter-spacing: 0.1em;
     text-align: center;
 	margin-top: 5px; 
 }
+
+.alert {
+    border: 2px solid red;
+}
+
+.alert-message {
+    color: red;
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+.error-message {
+	position: relative;
+	bottom: 420px;
+	left: 30px;
+    color: red;
+    margin-top: 10px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+}
+
+
 .hidden {
     display: none;
 }
